@@ -1,4 +1,4 @@
-import axios from 'axios'; 
+import axios from "axios";
 
 export default function Weather(props) {
     function handleResponse(response) {
