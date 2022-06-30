@@ -1,16 +1,17 @@
 import React from "react";
 import "./App.css";
 import Weather from "./Weather";
+import Search from "./Search";
+import Temperature from "./Temperature";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         
-        <h1>
-         Hello World
-        </h1>
-        <Weather city="Paris"/>
+        <Search />
+        <Weather city="Singapore"/>
+        <Temperature />
         
       </header>
     </div>
