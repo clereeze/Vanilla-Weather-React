@@ -1,6 +1,7 @@
 import axios from "axios";
 
 export default function Weather(props) {
+
     function handleResponse(response) {
         alert (`The weather in ${props.city} is ${response.data.main.temp}℃`)
     }

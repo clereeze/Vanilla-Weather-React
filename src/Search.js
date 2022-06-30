@@ -1,10 +1,8 @@
-import "./index.css";
-import axios from "axios";
+import React from 'react';
 import "./Search.css";
 
 export default function Search() {
   return (
-    <div className="Search">
       <form>
         <input
           type="text"
@@ -19,6 +17,5 @@ export default function Search() {
           Current
         </button>
       </form>
-    </div>
   );
 }
