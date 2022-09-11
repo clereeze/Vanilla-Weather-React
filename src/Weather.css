@@ -5,3 +5,15 @@
 .Weather h1 {
   color: #70757a;
 }
+
+.temperature {
+  font-size: 48px;
+  font-weight: 400;
+  font-family: Google Sans, arial, sans-serif;
+  color: #202124;
+}
+
+.units {
+  position: relative;
+  top: -23px;
+}

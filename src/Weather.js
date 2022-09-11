@@ -4,31 +4,76 @@ import "./Weather.css";
 
 export default function Weather(props) {
 
-    let [city, setCity] = useState("");
+    const [ready, setReady] = useState(false);
+    const [weatherData, setWeatherData] = useState({});
 
     function handleResponse(response) {
-        alert (`The weather in ${props.city} is ${response.data.main.temp}℃`)
-        setCity();
+        setWeatherData({
+            temperature: response.data.main.temp,
+            humidity: response.data.main.humidity,
+            date: "Wednesday 07:00",
+            description: response.data.weather[0].description,
+            iconUrl: "https://ssl.gstatic.com/onebox/weather/64/sunny_s_cloudy.png",
+            city: response.data.name,
+        });
+
+        setReady(true);
     }
 
-    let apiKey = "7b164cdced7aaeb17590e6fb8707df24"; 
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.city}&appid=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(handleResponse);
-
-    return (
+    if (ready) {
+        return (
+            <div className="Update">
+                <h1>
+                    {weatherData.city}
+                </h1>
             <ul> 
-                <li> 
-                    {city}
-                </li>
                 <li>
-                    Last update: 
+                    {weatherData.date}
                 </li>
-                <li> 
-                    weather description
+                <li className="text-capitalize"> 
+                    {weatherData.description}
                 </li>
             </ul>
-    
-    ); 
-    
+             <div className="row mt-3">
+        <div className="col-6">
+          <div className="float-left">
+              <div className="clearfix">
+            <img
+              src={weatherData.iconUrl}
+              alt={weatherData.description}
+              className="cloudy float-left"
+              id="icon"
+            />
+            <span className="temperature">{weatherData.temperature}</span>
+            <span className="units">
+              {" "}
+              <a href="/" className="active">
+                ℃
+              </a>
+              |<a href="/">℉</a>
+            </span>
+            </div>
+          </div>
+        </div>
+        <div className="col others">
+          <ul>
+            <li>
+              Humidity: <span id="humidity"> {weatherData.humidity}</span>%
+            </li>
+            <li>
+              Wind: <span id="wind"> {weatherData.wind}</span>km/h
+            </li>
+          </ul>
+        </div>
+      </div>
+      </div>
+            
+        );
+    } else {
+    const apiKey = "7b164cdced7aaeb17590e6fb8707df24"; 
+    let city ="Singapore";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    axios.get(apiUrl).then(handleResponse);
+    }
 }
