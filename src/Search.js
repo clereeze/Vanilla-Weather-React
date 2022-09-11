@@ -8,7 +8,7 @@ export default function Search() {
           type="text"
           placeholder="Enter city"
           id="search-bar"
-          autofocus="on"
+          autoFocus="on"
         />
         <button type="submit" class="btn btn-success" id="search-button">
           Search
